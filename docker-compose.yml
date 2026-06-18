@@ -7,6 +7,7 @@ services:
     hostname: opentakserver
     restart: unless-stopped
     tty: true
+    user: root
     ports:
       - "8081:8081" # OTS listens on this port on the loopback interface for HTTP(S) requests
     volumes:
@@ -47,6 +48,7 @@ services:
     hostname: ots_eud_handler
     restart: unless-stopped
     tty: true
+    user: root
     command: python3 /app/venv/bin/eud_handler
     ports:
       - "0.0.0.0:8088:8088" # TCP CoT streaming port
@@ -62,6 +64,7 @@ services:
     hostname: ots_eud_handler_ssl
     restart: unless-stopped
     tty: true
+    user: root
     command: python3 /app/venv/bin/eud_handler --ssl
     ports:
       - "0.0.0.0:8089:8089" # SSL CoT streaming port
